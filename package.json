@@ -16,6 +16,7 @@
         "typescript": "^5.9.3"
     },
     "dependencies": {
+        "echarts": "^6.0.0",
         "obsidian": "^1.12.3"
     }
 }

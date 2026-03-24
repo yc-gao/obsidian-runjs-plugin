@@ -13,13 +13,9 @@ export default class Main extends Plugin {
     async onload() {
         console.log('Loading plugin: ' + this.manifest.name);
 
-        this.registerMarkdownCodeBlockProcessor('runjs', async (source, el, ctx) => {
-            await this.renderJs(source, el);
+        this.registerMarkdownCodeBlockProcessor('runjs', (source, el, ctx) => {
+            eval(source)
         });
-    }
-
-    async renderJs(source: string, el: HTMLElement): Promise<void> {
-        eval(source);
     }
 
     onunload() {

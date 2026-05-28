@@ -16,6 +16,18 @@ export default class Main extends Plugin {
         this.registerMarkdownCodeBlockProcessor('runjs', (source, el, ctx) => {
             eval(source)
         });
+        this.registerMarkdownCodeBlockProcessor('echart', (source, el, ctx) => {
+            eval(`${source}
+                el.style.width = '100%'
+                el.style.aspectRatio = '16 / 9'
+
+                setTimeout(() => {
+                    const chart = this.echarts.init(el)
+                    chart.setOption(option)
+                })
+                `
+            )
+        });
     }
 
     onunload() {
